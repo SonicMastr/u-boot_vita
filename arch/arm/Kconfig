@@ -2101,10 +2101,7 @@ config TARGET_VITA
 	bool "Support Sony PlayStation Vita consoles"
 	select CPU_V7A
 	select SYS_ARCH_TIMER
-	select DM
-	select DM_GPIO
 	select DM_SERIAL
-	select DM_SPI
 	select SUPPORT_SPL
 	help
 	  Support for Sony PlayStation Vita consoles.

@@ -6,6 +6,7 @@
 #include <init.h>
 #include <asm/io.h>
 #include <spl.h>
+#include <debug_uart.h>
 
 #define PERVASIVE_RESET_BASE_ADDR	0xE3101000
 #define PERVASIVE_GATE_BASE_ADDR	0xE3102000
@@ -160,13 +161,24 @@ void board_init_f(ulong dummy)
 {
 	pervasive_clock_enable_gpio();
 	pervasive_reset_exit_gpio();
-	pervasive_clock_enable_uart(0);
-	pervasive_reset_exit_uart(0);
+	pervasive_clock_enable_uart(1);
+	pervasive_reset_exit_uart(1);
 
-	gpio_set_port_mode(0, GPIO_PORT_GAMECARD_LED, GPIO_PORT_MODE_OUTPUT);
-	gpio_port_clear(0, GPIO_PORT_GAMECARD_LED);
+	printascii("Hello World!\n");
+
+	gpio_set_port_mode(0, GPIO_PORT_PS_LED, GPIO_PORT_MODE_OUTPUT);
+	gpio_port_clear(0, GPIO_PORT_PS_LED);
+	gpio_port_set(0, GPIO_PORT_PS_LED);
+
 }
 #endif
+
+int checkboard(void)
+{
+	puts("Board: PlayStation Vita Devkit\n");
+
+	return 0;
+}
 
 int board_init(void)
 {

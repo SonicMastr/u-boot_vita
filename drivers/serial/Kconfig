@@ -1100,6 +1100,13 @@ config NPCM_SERIAL
 	  The driver enables the onboard serial port with 8-N-1
 	  configuration.
 
+config VITA_SERIAL
+	bool "UART driver for the PlayStation Vita"
+	depends on DM_SERIAL
+	help
+	  Select this to enable UART support for the
+	  PlayStation Vita
+
 config XEN_SERIAL
 	bool "XEN serial support"
 	depends on XEN
